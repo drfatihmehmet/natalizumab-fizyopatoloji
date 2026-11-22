@@ -2,8 +2,8 @@
 <html lang="tr">
 <head>
 <meta charset="utf-8"><link rel="icon" href="data:,">
-<!-- natalizumab-fizyopatoloji · build v24 · 2026-11-21 · 23 adım · derleme kimliği 88c4a0cf → v24 -->
-<!-- v24 değişiklikleri: 1. adım tek hücreyle anlatılır (antikor aynı hücrenin α4 saplarını kaplar);
+<!-- natalizumab-fizyopatoloji · build v25 · 2026-11-23 · 23 adım · derleme kimliği 88c4a0cf → v25 -->
+<!-- v25: VR menü, etiket iğneleri, A/X/B/Y eşlemesi, sayfa noktaları düzeltildi, grafik öne alındı. v24 değişiklikleri: 1. adım tek hücreyle anlatılır (antikor aynı hücrenin α4 saplarını kaplar);
      arrest yarıçapı düzeltildi (gövde endotele gömülmüyor); 8.-9. adımda kutuplaşma yüzeyin yerel
      çatısında; natalizumab β1 arayüzünün karşı yüzüne bağlanır; 10. adımda hücre duvara yaklaşıp
      tutunamadan geri çekilir; 15. adımda akson içi nörofilaman korunur, sızan havuz seyrelir;
@@ -11,7 +11,7 @@
      sunum kipi, Meta Quest 3 uyumluluk penceresi, etiket ve alt yazı yerleşimi düzeltmeleri. -->
 <!-- Tek dosya, çevrimdışı çalışır. Three.js r128 (MIT) gömülüdür. Gerçek dokunmatik cihaz ve VR başlığı testi yapılmamıştır. -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Multipl sklerozda natalizumabın etki mekanizması · v24</title>
+<title>Multipl sklerozda natalizumabın etki mekanizması · v25</title>
 <meta name="description" content="α4 integrin blokajı: moleküler hedeften klinik karara">
 <style>
 /* Düzen: tam genişlikte 3B sahne; sol üstte kontrol paneli, sağ altta adım kartı, sahnenin altında oynatıcı; sayfa sonunda özet şema, sınırlılıklar ve kaynaklar. Dar ekranda panel ve kart sahnenin üstüne/altına akar. */
@@ -318,6 +318,30 @@ details.tv>summary{cursor:pointer;font-size:14.5px}
 details.tv p{margin:6px 0;max-width:80ch;font-size:13.5px}
 details.tv p.sum{color:var(--muted)}
 
+
+/* v25: sayfa noktaları, vurgulu şema */
+.pop h3{margin:0 0 2px}
+.pop .pg .eyebrow{margin:6px 0 0}
+.ptrk{cursor:grab}.ptrk.drag{cursor:grabbing;scroll-snap-type:none!important}
+.ptrk:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+.dots{align-items:center}
+.dots i{position:relative;transition:width .25s,background .25s;height:7px}
+.dots i::after{content:'';position:absolute;inset:-8px -4px}
+.dots i.on{width:20px;border-radius:4px;background:var(--accent)}
+.inset{width:clamp(280px,30%,400px);padding:12px 14px 10px;border:2px solid var(--accent);cursor:zoom-in;
+  box-shadow:0 12px 36px rgba(0,0,0,.30);animation:insIn .6s cubic-bezier(.2,.8,.2,1)}
+.inset:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.inset .ttl{font-size:12.5px;color:var(--ink);font-weight:600;margin-bottom:6px}
+.inset .cap{font-size:12px;line-height:1.45;color:var(--ink);opacity:.9;margin-top:6px}
+.inset.big{width:min(700px,calc(100% - 28px));cursor:zoom-out;z-index:7}
+.inset.big .cap{display:block;font-size:14px}
+.inset.big .ttl{font-size:14px}
+@keyframes insIn{from{opacity:0;transform:translateX(26px) scale(.93)}to{opacity:1;transform:none}}
+@media (max-width:760px){.inset{width:180px}.inset.big{width:calc(100% - 28px)}.inset.big .cap{display:block}}
+body.proj .inset{width:clamp(380px,32%,560px)}
+body.proj .inset.big{width:min(960px,calc(100% - 40px))}
+body.proj .inset .cap{font-size:15px}
+@media (prefers-reduced-motion: reduce){.inset{animation:none}.dots i{transition:none}}
 </style>
 </head>
 <body>
@@ -431,7 +455,7 @@ details.tv p.sum{color:var(--muted)}
     <ol class="xrhow">
       <li>Dosyayı HTTPS üzerinden yayımlayın (ör. kurum sunucusu, GitHub Pages). WebXR, <span class="mono">file://</span> ve şifresiz <span class="mono">http://</span> adreslerinde çalışmaz; yalnız <span class="mono">localhost</span> istisnadır.</li>
       <li>Adresi Meta Quest 3 içindeki <b>Meta Quest Browser</b> ile açın ve oynatıcıdaki <b>Meta Quest 3 · VR</b> düğmesine basın.</li>
-      <li>Başlıkta: ışını bir yapıya doğrultun, adı görünür; tetik sayfalı bilgi kartını açar ve karttaki düğmelere de tetikle basılır. Kavrama (yan) tuşu basılı tutulunca sahne elinizle taşınır; iki elin kavramasıyla büyütülür, küçültülür ve döndürülür. A sonraki, B önceki adım; X oynat ya da duraklat; Y paneli gizler ya da gösterir. Sağ çubuk yatayda döndürür, dikeyde büyütüp küçültür, basılınca sahneyi ortalar; sol çubuk dikeyde sahneyi yaklaştırıp uzaklaştırır, yatayda adım değiştirir, basılınca hızı değiştirir. Panelin «Tuşlar» düğmesi bu özeti başlığın içinde de gösterir. El izlemede başparmak–işaret parmağı sıkıştırması tetik yerine geçer.</li>
+      <li>Başlıkta: ışını bir yapıya, etikete ya da panele doğrultun; tetik sayfalı bilgi kartını açar, Menü düğmesi adım, yapı, soru, olgu, klinik, kaynak ve sınırlılık listelerini açar. Kavrama (yan) tuşu basılı tutulunca sahne ya da panel elinizle taşınır; iki elin kavramasıyla büyütülür, küçültülür ve döndürülür. A sonraki, X önceki adım; B oynat ya da duraklat; Y menüyü açar ya da kapatır. Sağ çubuk yatayda döndürür, dikeyde büyütüp küçültür, basılınca her şeyi ortalar; sol çubuk dikeyde sahneyi yaklaştırıp uzaklaştırır, yatayda menü ya da kart sayfasını çevirir, basılınca panelleri gizler ya da gösterir. El izlemede başparmak–işaret parmağı sıkıştırması tetik yerine geçer.</li>
     </ol>
     <div style="display:flex;gap:8px;flex-wrap:wrap">
       <button class="pbtn primary" id="xrStart" hidden>VR oturumunu başlat</button>
@@ -652,7 +676,7 @@ const STEPS = [
 
  {title:'PML şüphesi: ilk klinik karar', dur:9,
   sum:'Şüphe anında yapılacak ilk şey tedaviyi sürdürmek değil, bir sonraki dozu bekletmek ve değerlendirmeyi gecikmeden tamamlamaktır.',
-  text:'Eğitim açısından belirleyici an tanının konduğu an değil, şüphenin doğduğu andır. Ürün bilgisi bu noktada tek bir kural koyar: progresif multifokal lökoensefalopatiden şüphelenildiğinde, tanı dışlanana kadar tedaviye devam edilmez ve bir sonraki doz uygulanmaz. Değerlendirme gecikmeden yapılır: şüpheli lezyon görüldüğünde manyetik rezonans protokolü kontrastlı T1 ağırlıklı görüntülemeyi kapsayacak biçimde genişletilir ve beyin omurilik sıvısında JC virüsü DNA’sının çok duyarlı PCR ile aranması değerlendirilir. İlk PCR’ın negatif olması tanıyı tek başına dışlamaz; klinik ve görüntüleme şüphesi sürüyorsa inceleme yinelenir. Risk katmanlamasının klinik omurgası üç değişkendir: anti-JC virüs antikor durumu, tedavi süresi ve daha önce immünsüpresan kullanımı. Antikor indeksinin katkısı özellikle antikor pozitif olup daha önce immünsüpresan kullanmamış hastalarda tanımlanmıştır; İnsidans çalışmasında en yüksek tahmini risk, antikor pozitif olup daha önce immünsüpresan kullanmış ve 25–48 ay tedavi almış hastalarda bildirilmiştir. Antikor indeksinin katkısı, antikor pozitif olup daha önce immünsüpresan kullanmamış hastalarda riski daha ince ayırmasıdır; bu katkı özet düzeyinde aktarılmıştır. Erken ve belirtisiz dönemde yakalanmanın sonucu iyileştirebileceği bildirilmiştir. Bu üç değişkenli çerçevenin niceliksel dayanağı, 2012’de 99.571 hastada 212 doğrulanmış olgunun bildirildiği insidans çalışmasıdır; o çözümlemede tanı öncesi örneği bulunan 54 hastanın tümü antikor pozitifti ve üç risk etmenini birlikte taşıyan grup en yüksek tahmini riske sahipti. Sayılar o dönemin verisidir; kararı veren, sayının kendisi değil hastanın risk profilidir.',
+  text:'Eğitim açısından belirleyici an tanının konduğu an değil, şüphenin doğduğu andır. Ürün bilgisi bu noktada tek bir kural koyar: progresif multifokal lökoensefalopatiden şüphelenildiğinde, tanı dışlanana kadar tedaviye devam edilmez ve bir sonraki doz uygulanmaz. Değerlendirme gecikmeden yapılır: şüpheli lezyon görüldüğünde manyetik rezonans protokolü kontrastlı T1 ağırlıklı görüntülemeyi kapsayacak biçimde genişletilir ve beyin omurilik sıvısında JC virüsü DNA’sının çok duyarlı PCR ile aranması değerlendirilir. İlk PCR’ın negatif olması tanıyı tek başına dışlamaz; klinik ve görüntüleme şüphesi sürüyorsa inceleme yinelenir. Risk katmanlamasının klinik omurgası üç değişkendir: anti-JC virüs antikor durumu, tedavi süresi ve daha önce immünsüpresan kullanımı. Antikor indeksinin katkısı özellikle antikor pozitif olup daha önce immünsüpresan kullanmamış hastalarda tanımlanmıştır; bu katkı özet düzeyinde aktarılmıştır. İnsidans çalışmasında en yüksek tahmini risk, antikor pozitif olup daha önce immünsüpresan kullanmış ve 25–48 ay tedavi almış hastalarda bildirilmiştir. Erken ve belirtisiz dönemde yakalanmanın sonucu iyileştirebileceği bildirilmiştir. Bu üç değişkenli çerçevenin niceliksel dayanağı, 2012’de 99.571 hastada 212 doğrulanmış olgunun bildirildiği insidans çalışmasıdır; o çözümlemede tanı öncesi örneği bulunan 54 hastanın tümü antikor pozitifti ve üç risk etmenini birlikte taşıyan grup en yüksek tahmini riske sahipti. Sayılar o dönemin verisidir; kararı veren, sayının kendisi değil hastanın risk profilidir.',
   src:['ema','bloomgren12','schwab17','plavina14'],
   focus:['jcv','olig','csf','micro','glia'], cam:{t:[17.2,0.8,0.8],az:-0.2,pol:1.08,d:14},
   rx:[{n:'Dozun bekletilmesi',m:'Şüphe sürdüğü sürece α4 blokajının derinleşmesini durdurur; tanı dışlanana kadar tedaviye devam edilmez.',s:['ema']}]},
@@ -2327,11 +2351,13 @@ const XR = {active:false, sim:false, hp:new THREE.Vector3(), hq:new THREE.Quater
 
 /* ---- sahne içi yüzeyler: yüksek çözünürlüklü tuval dokuları ----
    Yazı keskinliği için doku 2048 piksel/metre çizilir, mipmap kapalı tutulur;
-   yazı boyutları 1 m uzaklıkta yaklaşık 1,4° açı verecek biçimde seçilmiştir. */
+   yazı boyutları 1 m uzaklıkta yaklaşık 1,4° ve üzeri açı verecek biçimde seçilmiştir.
+   Işın üzerindeki düğme vurgusu dokuyu yeniden yüklemez; ayrı bir yarı saydam levha kullanılır. */
 const PX_M = 2048;
 const SERIF = 'Georgia, "Noto Serif", "DejaVu Serif", serif';
 const SANS  = 'system-ui, "Noto Sans", Roboto, "Segoe UI", Arial, sans-serif';
 const MONO  = 'ui-monospace, "Roboto Mono", Menlo, Consolas, monospace';
+const hovMat = new THREE.MeshBasicMaterial({color:0x8FD1BC, transparent:true, opacity:.30, depthTest:false, depthWrite:false, toneMapped:false});
 function mkPanel(w, h, order){
   const cv = document.createElement('canvas');
   cv.width = Math.round(w*PX_M); cv.height = Math.round(h*PX_M);
@@ -2342,19 +2368,44 @@ function mkPanel(w, h, order){
   const mesh = new THREE.Mesh(new THREE.PlaneGeometry(w, h),
     new THREE.MeshBasicMaterial({map:tex, transparent:true, depthTest:false, depthWrite:false, toneMapped:false}));
   mesh.renderOrder = order;
-  const g = new THREE.Group(); g.add(mesh); g.visible = false; scene.add(g);
-  return {w, h, cv, cx, tex, mesh, g, btns:[], key:'', hover:null};
+  const hov = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), hovMat);
+  hov.renderOrder = order + .5; hov.position.z = .002; hov.visible = false;
+  const g = new THREE.Group(); g.add(mesh); g.add(hov); g.visible = false; scene.add(g);
+  return {w, h, cv, cx, tex, mesh, hov, g, btns:[], key:'', hover:null, shown:null};
 }
-const hudP  = mkPanel(1.00, .50, 9999);
-const cardP = mkPanel(.90, .64, 10000);
-const tagP  = mkPanel(.40, .11, 10001);
+/* ışının üstündeki düğmeyi vurgula: doku yenilenmez */
+function setHover(P, id){
+  if (P.shown === id) return;
+  P.shown = id;
+  const b = id && P.btns.find(b => b.id === id);
+  if (!b){ P.hov.visible = false; return; }
+  P.hov.position.x = ((b.x + b.w/2)/P.cv.width - .5) * P.w;
+  P.hov.position.y = (.5 - (b.y + b.h/2)/P.cv.height) * P.h;
+  P.hov.scale.set(b.w/P.cv.width*P.w, b.h/P.cv.height*P.h, 1);
+  P.hov.visible = true;
+}
+const hudP   = mkPanel(1.00, .50, 9999);
+const cardP  = mkPanel(.90, .64, 10000);
+const menuP  = mkPanel(1.00, .72, 10002);
+const insetP = mkPanel(.62, .52, 9998);
+const tagP   = mkPanel(.40, .11, 10010);
+const PINS = [];
+for (let i = 0; i < 4; i++){
+  const P = mkPanel(.46, .095, 10020 + i*2);
+  P.pin = true;
+  P.ln = new THREE.Line(new THREE.BufferGeometry().setFromPoints([V(0,0,0), V(0,0,0)]),
+    new THREE.LineBasicMaterial({color:0x8FD1BC, transparent:true, opacity:.85, depthTest:false}));
+  P.ln.renderOrder = 10019; P.ln.frustumCulled = false; P.ln.visible = false; scene.add(P.ln);
+  PINS.push(P);
+}
+const ALLP = [menuP, cardP, insetP, hudP, ...PINS];
 
 function uiTheme(){
   return themeDark()
     ? {bg:'rgba(14,20,18,.97)', line:'rgba(130,150,142,.65)', ink:'#EEF2F0', mut:'#B4C0BA', acc:'#8FD1BC',
-       btn:'rgba(255,255,255,.10)', btnH:'rgba(143,209,188,.38)', off:'rgba(255,255,255,.04)'}
+       btn:'rgba(255,255,255,.10)', on:'rgba(143,209,188,.26)', off:'rgba(255,255,255,.04)'}
     : {bg:'rgba(250,251,250,.98)', line:'rgba(90,110,102,.65)', ink:'#141A18', mut:'#44504B', acc:'#1F6B58',
-       btn:'rgba(20,40,34,.08)', btnH:'rgba(31,107,88,.28)', off:'rgba(20,40,34,.04)'};
+       btn:'rgba(20,40,34,.08)', on:'rgba(31,107,88,.20)', off:'rgba(20,40,34,.04)'};
 }
 function rrect(cx, x, y, w, h, r){
   cx.beginPath(); cx.moveTo(x+r,y); cx.arcTo(x+w,y,x+w,y+h,r); cx.arcTo(x+w,y+h,x,y+h,r);
@@ -2379,33 +2430,67 @@ function drawText(cx, txt, x, y, maxW, lh, max){
   ls.forEach((l,i) => cx.fillText(l, x, y + i*lh));
   return y + ls.length*lh;
 }
+/* satırlara bölünmüş metin: paragraflar \n ile ayrılır, aralarına yarım satır boşluk girer */
+function paraLines(cx, body, maxW){
+  const out = [];
+  String(body).split('\n').forEach((p, i) => { if (i && p) out.push(''); out.push(...wrapLines(cx, p, maxW)); });
+  return out;
+}
 function drawBtn(P, id, x, y, w, h, label, o){
   o = o || {};
-  const T = uiTheme(), cx = P.cx, hov = P.hover === id && !o.off;
+  const T = uiTheme(), cx = P.cx;
   if (!o.off) P.btns.push({id, x, y, w, h});
-  cx.fillStyle = o.off ? T.off : (hov ? T.btnH : T.btn);
+  cx.fillStyle = o.off ? T.off : (o.on ? T.on : T.btn);
   rrect(cx, x, y, w, h, h*.3); cx.fill();
-  cx.lineWidth = hov ? 6 : 3; cx.strokeStyle = hov ? T.acc : T.line; cx.stroke();
+  cx.lineWidth = o.on ? 5 : 3; cx.strokeStyle = o.on ? T.acc : T.line; cx.stroke();
   cx.fillStyle = o.off ? T.mut : T.ink; cx.textAlign = 'center'; cx.textBaseline = 'middle';
   cx.font = '600 ' + (o.fs || 46) + 'px ' + SANS;
-  const dx = o.icon ? 34 : 0;
+  const dx = o.icon ? 30 : 0;
   cx.fillText(label, x + w/2 + dx, y + h/2 + 2);
   if (o.icon){                               /* oynat üçgeni / duraklat çubukları */
-    const ix = x + 62, iy = y + h/2; cx.fillStyle = o.off ? T.mut : T.acc;
+    const ix = x + 58, iy = y + h/2; cx.fillStyle = o.off ? T.mut : T.acc;
     if (o.icon === 'play'){ cx.beginPath(); cx.moveTo(ix-14, iy-26); cx.lineTo(ix+26, iy); cx.lineTo(ix-14, iy+26); cx.closePath(); cx.fill(); }
     else { cx.fillRect(ix-20, iy-26, 14, 52); cx.fillRect(ix+6, iy-26, 14, 52); }
   }
   cx.textAlign = 'left'; cx.textBaseline = 'top';
 }
+/* liste satırı: rozet ya da renk örneği, başlık ve alt satır */
+function drawRow(P, id, x, y, w, h, o){
+  const T = uiTheme(), cx = P.cx;
+  P.btns.push({id, x, y, w, h});
+  cx.fillStyle = o.on ? T.on : T.btn; rrect(cx, x, y, w, h, 30); cx.fill();
+  cx.lineWidth = o.on ? 5 : 3; cx.strokeStyle = o.on ? T.acc : T.line; cx.stroke();
+  let tx = x + 36;
+  cx.textBaseline = 'middle'; cx.textAlign = 'left';
+  if (o.badge){
+    cx.fillStyle = T.acc; cx.font = '700 40px ' + MONO; cx.fillText(o.badge, tx, y + h/2 + 2); tx += 118;
+  } else if (o.swatch){
+    cx.fillStyle = o.swatch; cx.beginPath(); cx.arc(tx + 22, y + h/2, 22, 0, 6.2832); cx.fill();
+    cx.strokeStyle = T.line; cx.lineWidth = 2; cx.stroke(); tx += 84;
+  }
+  cx.fillStyle = T.ink; cx.font = '500 40px ' + SANS;
+  const maxW = x + w - tx - 40, ls = wrapLines(cx, o.label, maxW).slice(0, 2);
+  const lh = 48, y0 = y + h/2 - (ls.length - 1)*lh/2 - (o.sub ? 14 : 0);
+  ls.forEach((l, i) => cx.fillText(l, tx, y0 + i*lh));
+  if (o.sub){ cx.fillStyle = T.acc; cx.font = '500 30px ' + MONO; cx.fillText(o.sub, tx, y0 + ls.length*lh - 6); }
+  cx.textBaseline = 'top';
+}
+const frameBox = (P, border) => {
+  const T = uiTheme(), cx = P.cx, W = P.cv.width, H = P.cv.height;
+  cx.clearRect(0,0,W,H);
+  cx.fillStyle = T.bg; rrect(cx, 6, 6, W-12, H-12, 46); cx.fill();
+  cx.strokeStyle = border ? T.acc : T.line; cx.lineWidth = border ? 5 : 4; cx.stroke();
+  cx.textBaseline = 'top'; cx.textAlign = 'left';
+};
 
 /* ---- HUD: adım başlığı, alt yazı ve düğmeler ---- */
 let hudKey = '', hudOn = true, hudHelp = false;
 const HELP = [
-  'Tetik · bir yapıya doğrultup seçer; bilgi kartını açar. Kartta düğmeler de tetikle basılır.',
-  'Kavrama (yan tuş) · basılı tutarak sahneyi taşırsınız; iki elin kavramasıyla büyütür, küçültür, döndürürsünüz.',
-  'A · sonraki adım     B · önceki adım     X · oynat / duraklat     Y · paneli gizle / göster',
-  'Sağ çubuk · yatay: döndürür, dikey: büyütür / küçültür. Sağ çubuğa basmak sahneyi yeniden ortalar.',
-  'Sol çubuk · dikey: sahneyi yaklaştırır / uzaklaştırır, yatay: adım değiştirir. Sola basmak hızı değiştirir.'
+  'Tetik · ışının gösterdiği yapıyı, etiketi ya da düğmeyi seçer; yapı seçilince sayfalı bilgi kartı açılır.',
+  'Kavrama (yan tuş) · basılı tutunca sahneyi ya da paneli taşır; iki elle büyütür, küçültür, döndürür.',
+  'A · sonraki adım · X · önceki adım · B · oynat / duraklat · Y · menü (adım, yapı, soru, olgu, klinik, kaynak, sınır).',
+  'Sağ çubuk · yatay: döndürür, dikey: büyütür / küçültür; basılınca sahneyi ve panelleri yeniden ortalar.',
+  'Sol çubuk · dikey: sahneyi yaklaştırır / uzaklaştırır; yatay: menü ve kartta sayfa, değilse adım değiştirir; basılınca panelleri gizler / gösterir.'
 ];
 function drawHud(){
   const S = state.step, st = STEPS[S-1], P = hudP, lines = CAP[S] || [];
@@ -2416,15 +2501,12 @@ function drawHud(){
     acc += dd;
   }
   const pr = clamp(state.tau / stepDur(S));
-  const k = [S, idx, hudHelp?1:0, state.playing?1:0, state.speed, P.hover, Math.floor(pr*24), themeDark()?1:0].join('|');
+  const k = [S, idx, hudHelp?1:0, state.playing?1:0, state.speed, vmenu.open?1:0, Math.floor(pr*24), themeDark()?1:0].join('|');
   if (k === hudKey) return;
   hudKey = k;
   const W = P.cv.width, H = P.cv.height, cx = P.cx, T = uiTheme();
-  P.btns = [];
-  cx.clearRect(0,0,W,H);
-  cx.fillStyle = T.bg; rrect(cx, 6, 6, W-12, H-12, 46); cx.fill();
-  cx.strokeStyle = T.line; cx.lineWidth = 4; cx.stroke();
-  cx.textBaseline = 'top'; cx.textAlign = 'left';
+  P.btns = []; P.shown = null;
+  frameBox(P);
   cx.fillStyle = T.acc; cx.font = '600 32px ' + MONO;
   cx.fillText(PHASE_OF(S).toUpperCase() + '  ·  ADIM ' + S + '/' + STEPS.length + '  ·  HIZ ' + String(state.speed).replace('.', ',') + '×', 64, 46);
   cx.fillStyle = T.ink; cx.font = '700 70px ' + SERIF;
@@ -2433,70 +2515,310 @@ function drawHud(){
   if (hudHelp){
     cx.font = '400 42px ' + SANS;
     let yy = y + 14;
-    HELP.forEach(t => { yy = drawText(cx, t, 64, yy, W-128, 54, 2) + 14; });
+    HELP.forEach(t => { yy = drawText(cx, t, 64, yy, W-128, 54, 3) + 12; });
   } else {
     cx.font = '400 60px ' + SANS;
     drawText(cx, lines[idx] || st.sum, 64, y + 30, W-128, 80, 5);
   }
-  /* adım ilerleme çizgisi */
-  cx.fillStyle = T.btn; rrect(cx, 64, H-196, W-128, 12, 6); cx.fill();
+  cx.fillStyle = T.btn; rrect(cx, 64, H-196, W-128, 12, 6); cx.fill();      /* adım ilerleme çizgisi */
   cx.fillStyle = T.acc; rrect(cx, 64, H-196, Math.max(12, (W-128)*pr), 12, 6); cx.fill();
-  /* düğmeler */
-  const by = H-160, bh = 118, g = 22;
-  const ws = [330, 470, 330, 400, 330]; let x = 64;
-  drawBtn(P, 'prev',   x, by, ws[0], bh, '‹  Geri',  {off: S <= 1}); x += ws[0] + g;
-  drawBtn(P, 'play',   x, by, ws[1], bh, state.playing ? 'Duraklat' : 'Oynat', {icon: state.playing ? 'pause' : 'play'}); x += ws[1] + g;
-  drawBtn(P, 'next',   x, by, ws[2], bh, 'İleri  ›', {off: S >= STEPS.length}); x += ws[2] + g;
-  drawBtn(P, 'center', x, by, ws[3], bh, 'Ortala'); x += ws[3] + g;
-  drawBtn(P, 'help',   x, by, ws[4], bh, hudHelp ? 'Kapat' : 'Tuşlar');
+  const by = H-160, bh = 118, g = 12;
+  const ws = [250, 360, 250, 250, 260, 240, 240]; let x = 64;
+  const B = (id, label, o) => { drawBtn(P, id, x, by, ws[B.i], bh, label, Object.assign({fs:42}, o)); x += ws[B.i++] + g; }; B.i = 0;
+  B('prev', '‹ Geri', {off: S <= 1});
+  B('play', state.playing ? 'Duraklat' : 'Oynat', {icon: state.playing ? 'pause' : 'play'});
+  B('next', 'İleri ›', {off: S >= STEPS.length});
+  B('menu', 'Menü', {on: vmenu.open});
+  B('center', 'Ortala');
+  B('speed', 'Hız ' + String(state.speed).replace('.', ',') + '×');
+  B('help', hudHelp ? 'Kapat' : 'Tuşlar', {on: hudHelp});
   P.tex.needsUpdate = true;
 }
 
 /* ---- bilgi kartı: ışınla seçilen yapının sayfalı ayrıntısı ---- */
-const vcard = {open:false, key:null, page:0};
+const vcard = {open:false, key:null, page:0, pt:null};
+let emphKey = null;
+function relSteps(key){ return STEPS.map((s,i) => (s.focus || []).includes(key) ? i+1 : 0).filter(Boolean); }
 function drawCard(){
   if (!vcard.open) return;
   const P = cardP, pages = INFO[vcard.key] || [], pg = pages[vcard.page] || {t:'', b:''};
-  const k = [vcard.key, vcard.page, P.hover, themeDark()?1:0].join('|');
+  const rel = relSteps(vcard.key), nxt = rel.find(n => n > state.step) || rel.find(n => n !== state.step) || 0;
+  vcard.rel = nxt;
+  const k = [vcard.key, vcard.page, emphKey === vcard.key ? 1 : 0, nxt, themeDark()?1:0].join('|');
   if (k === P.key) return;
-  P.key = k;
+  P.key = k; P.shown = null;
   const W = P.cv.width, H = P.cv.height, cx = P.cx, T = uiTheme();
   P.btns = [];
-  cx.clearRect(0,0,W,H);
-  cx.fillStyle = T.bg; rrect(cx, 6, 6, W-12, H-12, 46); cx.fill();
-  cx.strokeStyle = T.acc; cx.lineWidth = 5; cx.stroke();
-  cx.textBaseline = 'top'; cx.textAlign = 'left';
+  frameBox(P, true);
   cx.fillStyle = T.acc; cx.font = '600 32px ' + MONO;
   cx.fillText('YAPI BİLGİSİ  ·  SAYFA ' + (vcard.page+1) + '/' + pages.length, 64, 46);
+  pages.forEach((_, i) => {                  /* sayfa noktaları: geçerli sayfa dolu ve uzun */
+    const on = i === vcard.page, px = W - 64 - (pages.length - i)*44;
+    cx.fillStyle = on ? T.acc : T.line; rrect(cx, px, 52, on ? 34 : 18, 18, 9); cx.fill();
+  });
   cx.fillStyle = T.ink; cx.font = '700 70px ' + SERIF;
-  let y = drawText(cx, DEFS[vcard.key] || vcard.key, 64, 96, W-128, 82, 2);
+  const y = drawText(cx, DEFS[vcard.key] || vcard.key, 64, 96, W-128, 82, 2);
   cx.fillStyle = T.acc; cx.font = '600 38px ' + MONO;
   cx.fillText(String(pg.t).toLocaleUpperCase('tr-TR'), 64, y + 22);
   cx.fillStyle = T.ink; cx.font = '400 58px ' + SANS;
-  drawText(cx, pg.b, 64, y + 96, W-128, 78, 9);
-  const by = H-160, bh = 118, g = 22, bw = (W-128-2*g)/3;
-  drawBtn(P, 'cprev',  64,             by, bw, bh, '‹  Önceki', {off: vcard.page <= 0});
-  drawBtn(P, 'cnext',  64 + bw + g,    by, bw, bh, 'Sonraki  ›', {off: vcard.page >= pages.length-1});
-  drawBtn(P, 'cclose', 64 + 2*(bw+g),  by, bw, bh, 'Kapat');
+  drawText(cx, pg.b, 64, y + 96, W-128, 78, 8);
+  const by = H-160, bh = 118, g = 14, bw = (W-128-4*g)/5;
+  drawBtn(P, 'cprev',  64,              by, bw, bh, '‹ Önceki',  {off: vcard.page <= 0, fs:40});
+  drawBtn(P, 'cnext',  64 + (bw+g),     by, bw, bh, 'Sonraki ›', {off: vcard.page >= pages.length-1, fs:40});
+  drawBtn(P, 'cemph',  64 + 2*(bw+g),   by, bw, bh, 'Vurgula',   {on: emphKey === vcard.key, fs:40});
+  drawBtn(P, 'crel',   64 + 3*(bw+g),   by, bw, bh, nxt ? 'Adım ' + nxt + ' ›' : 'Adım yok', {off: !nxt, fs:40});
+  drawBtn(P, 'cclose', 64 + 4*(bw+g),   by, bw, bh, 'Kapat', {fs:40});
   P.tex.needsUpdate = true;
+}
+function emphasize(key){
+  if (emphKey && REG[emphKey]) REG[emphKey].mats.forEach(m => glowOff(m));
+  emphKey = key || null;
+  if (emphKey && REG[emphKey]) REG[emphKey].mats.forEach(m => glowOn(m, .30));
 }
 function openCard(key, point){
   if (!INFO[key]) return;
-  vcard.open = true; vcard.key = key; vcard.page = 0; cardP.key = ''; cardP.hover = null;
+  closeMenu();
+  vcard.open = true; vcard.key = key; vcard.page = 0; cardP.key = ''; vcard.pt = point ? point.clone() : null;
   pauseForReading();                        /* masaüstü penceresindeki gibi: okurken oynatma durur */
   hudKey = '';
-  const head = XR.hp, d = new THREE.Vector3().copy(point).sub(head);
-  const hf = headFwdFlat(new THREE.Vector3());
+  const head = XR.hp, hf = headFwdFlat(new THREE.Vector3());
+  const tgt = point ? point.clone() : head.clone().addScaledVector(hf, 1);
+  const d = new THREE.Vector3().copy(tgt).sub(head);
   const lat = d.dot(new THREE.Vector3(-hf.z, 0, hf.x));
   const side = lat > .05 ? -1 : 1;           /* kart, yapının karşı yanına konur */
   d.y = 0; const dist = d.length() || 1; d.normalize();
   const right = new THREE.Vector3(-d.z, 0, d.x);
   const pos = head.clone().addScaledVector(d, clamp(dist, .8, 1.15)).addScaledVector(right, side*.62);
-  pos.y = clamp(point.y + .05, head.y - .45, head.y + .30);
+  pos.y = clamp(tgt.y + .05, head.y + .06, head.y + .30);   /* kartın düğmeleri HUD'un üstünde kalır */
   cardP.g.position.copy(pos); cardP.g.lookAt(head); cardP.g.visible = true;
   cardP.g.updateMatrixWorld(true);
 }
-function closeCard(){ vcard.open = false; cardP.g.visible = false; cardP.hover = null; }
+function closeCard(){ vcard.open = false; cardP.g.visible = false; setHover(cardP, null); emphasize(null); }
+function cardPage(d){ if (!vcard.open) return; vcard.page = clamp(vcard.page + d, 0, (INFO[vcard.key] || []).length - 1); cardP.key = ''; }
+
+/* ---- menü: adımlar, yapılar, soru, olgu, klinik, kaynak, sınırlar ---- */
+const vmenu = {open:false, tab:'steps', page:0, pages:[]};
+const MENU_TABS = [['steps','Adımlar'],['struct','Yapılar'],['quiz','Soru'],['case','Olgu'],['clin','Klinik'],['refs','Kaynak'],['lim','Sınırlar']];
+const keyColor = k => { const e = LEGEND.find(([,,ks]) => ks.includes(k)); return e ? hex(e[1]) : null; };
+function menuPages(){
+  const S = state.step, st = STEPS[S-1], per = 7, cx = menuP.cx;
+  const chunk = (rows, title) => { const o = []; for (let i = 0; i < rows.length; i += per) o.push({kind:'rows', title, rows:rows.slice(i, i+per)}); return o; };
+  const textPages = (title, body) => {
+    cx.font = '400 44px ' + SANS;
+    const ls = paraLines(cx, body, menuP.cv.width - 128), o = [];
+    for (let i = 0; i < ls.length; i += 12) o.push({kind:'text', title: o.length ? title + ' (devam)' : title, lines: ls.slice(i, i+12)});
+    return o.length ? o : [{kind:'text', title, lines:['Kayıt yok.']}];
+  };
+  switch (vmenu.tab){
+    case 'steps':
+      return chunk(STEPS.map((s,i) => ({id:'step:' + (i+1), badge:PHASE_LETTER(i+1) + (i+1), label:s.title, on:i+1 === S})), 'Adımlar · satıra tetikle gidilir');
+    case 'struct': {
+      const f = (st.focus || []).filter(k => DEFS[k]);
+      const rest = Object.keys(DEFS).filter(k => !f.includes(k)).sort((a,b) => DEFS[a].localeCompare(DEFS[b], 'tr'));
+      const row = (k, on) => ({id:'key:' + k, label:DEFS[k], swatch:keyColor(k) || '#888', sub:on ? 'bu adımda' : '', on});
+      return chunk([...f.map(k => row(k, true)), ...rest.map(k => row(k, false))], 'Yapılar · satıra tetikle bilgi kartı açılır');
+    }
+    case 'quiz': {
+      if (QUIZ[S]) return [{kind:'quiz'}];
+      return chunk(Object.keys(QUIZ).map(n => ({id:'step:' + n, badge:'S' + n, label:QUIZ[n].q})), 'Bu adımda soru yok · sorulu adımlar');
+    }
+    case 'case': { const c = CASE[PHASE_LETTER(S)]; return textPages(c.t, c.b); }
+    case 'clin': return CLINIC.flatMap(c => textPages(c.h, c.b));
+    case 'refs': {
+      const out = [];
+      (st.src || []).forEach(k => { const s = SRC[k]; if (!s) return;
+        out.push('• ' + s.c.replace(/\s+/g, ' ') + ' [' + (s.acc === 'unv' ? 'doğrulanmadı' : (ACC_LABEL[s.acc] || '')) + (s.doi ? ' · DOI ' + s.doi : '') + ']'); });
+      (st.rx || []).forEach(r => out.push('Tedavi bağlantısı: ' + r.n + ' — ' + r.m));
+      return textPages('Bu adımın kaynakları', out.length ? out.join('\n') : 'Bu adım için kaynak kaydı yok.');
+    }
+    case 'lim':
+      return [...textPages('Sahnenin sınırlılıkları', LIMITS.map(x => '• ' + x).join('\n')),
+              ...textPages('Sözlük', GLOSS.map(([a,b]) => a + ' — ' + b).join('\n'))];
+  }
+  return [];
+}
+function menuStart(){
+  if (vmenu.tab === 'steps'){ vmenu.page = Math.floor((state.step - 1) / 7); }
+  else vmenu.page = 0;
+}
+function drawMenu(){
+  if (!vmenu.open) return;
+  const P = menuP, answeredQ = answered[state.step];
+  vmenu.pages = menuPages();
+  vmenu.page = clamp(vmenu.page, 0, Math.max(0, vmenu.pages.length - 1));
+  const k = [vmenu.tab, vmenu.page, state.step, answeredQ, themeDark()?1:0].join('|');
+  if (k === P.key) return;
+  P.key = k; P.shown = null;
+  const W = P.cv.width, H = P.cv.height, cx = P.cx, T = uiTheme(), pg = vmenu.pages[vmenu.page];
+  P.btns = [];
+  frameBox(P, true);
+  cx.fillStyle = T.acc; cx.font = '600 32px ' + MONO;
+  cx.fillText('MENÜ  ·  ADIM ' + state.step + '/' + STEPS.length, 64, 50);
+  drawBtn(P, 'mclose', W - 64 - 300, 28, 300, 84, 'Kapat', {fs:40});
+  const tw = (W - 128 - 6*14) / 7;
+  MENU_TABS.forEach(([id, lab], i) => drawBtn(P, 'tab:' + id, 64 + i*(tw + 14), 128, tw, 96, lab, {on: id === vmenu.tab, fs:36}));
+  const y0 = 252;
+  cx.fillStyle = T.ink; cx.font = '700 52px ' + SERIF;
+  if (pg && pg.kind === 'rows'){
+    cx.fillStyle = T.mut; cx.font = '500 32px ' + MONO; cx.fillText(String(pg.title).toUpperCase(), 64, y0);
+    pg.rows.forEach((r, i) => drawRow(P, r.id, 64, y0 + 50 + i*134, W - 128, 124, r));
+  } else if (pg && pg.kind === 'text'){
+    cx.fillStyle = T.ink; cx.font = '700 56px ' + SERIF;
+    const yy = drawText(cx, pg.title, 64, y0, W - 128, 66, 2);
+    cx.fillStyle = T.ink; cx.font = '400 44px ' + SANS;
+    pg.lines.forEach((l, i) => cx.fillText(l, 64, yy + 22 + i*62));
+  } else if (pg && pg.kind === 'quiz'){
+    const q = QUIZ[state.step];
+    cx.fillStyle = T.ink; cx.font = '600 46px ' + SANS;
+    let yy = drawText(cx, q.q, 64, y0, W - 128, 62, 3) + 18;
+    q.o.forEach((o, i) => {
+      const done = answeredQ != null, isA = i === q.a, isW = done && i === answeredQ && !isA;
+      drawRow(P, 'q:' + i, 64, yy + i*118, W - 128, 108, {label:(isA && done ? '✓ ' : (isW ? '✗ ' : '')) + o, on: done && isA, badge:'ABCD'[i]});
+    });
+    if (answeredQ != null){
+      cx.fillStyle = T.ink; cx.font = '400 38px ' + SANS;
+      drawText(cx, (answeredQ === q.a ? 'Doğru. ' : 'Doğru yanıt işaretlendi. ') + q.x, 64, yy + 4*118 + 14, W - 128, 50, 5);
+    }
+  }
+  const by = H - 150, n = vmenu.pages.length;
+  drawBtn(P, 'mprev', 64, by, 480, 110, '‹ Önceki sayfa', {off: vmenu.page <= 0, fs:40});
+  cx.fillStyle = T.mut; cx.font = '500 38px ' + MONO; cx.textAlign = 'center';
+  cx.fillText('SAYFA ' + (vmenu.page + 1) + '/' + Math.max(1, n), W/2, by + 34); cx.textAlign = 'left';
+  drawBtn(P, 'mnext', W - 64 - 480, by, 480, 110, 'Sonraki sayfa ›', {off: vmenu.page >= n - 1, fs:40});
+  P.tex.needsUpdate = true;
+}
+function openMenu(tab){
+  closeCard();
+  vmenu.open = true; if (tab) vmenu.tab = tab;
+  menuStart(); menuP.key = ''; hudKey = '';
+  const f = headFwdFlat(new THREE.Vector3());
+  menuP.g.position.copy(XR.hp).addScaledVector(f, 1.05); menuP.g.position.y = XR.hp.y + .08;
+  menuP.g.lookAt(XR.hp); menuP.g.visible = true; menuP.g.updateMatrixWorld(true);
+  pauseForReading();
+}
+function closeMenu(){ if (!vmenu.open) return; vmenu.open = false; menuP.g.visible = false; setHover(menuP, null); hudKey = ''; }
+function menuPress(id){
+  if (id === 'mclose'){ closeMenu(); return; }
+  if (id === 'mprev'){ vmenu.page = Math.max(0, vmenu.page - 1); menuP.key = ''; return; }
+  if (id === 'mnext'){ vmenu.page = Math.min(vmenu.pages.length - 1, vmenu.page + 1); menuP.key = ''; return; }
+  if (id.startsWith('tab:')){ vmenu.tab = id.slice(4); menuStart(); menuP.key = ''; return; }
+  if (id.startsWith('step:')){ closeMenu(); goStep(+id.slice(5), state.playing); return; }
+  if (id.startsWith('key:')){ openCard(id.slice(4), null); return; }
+  if (id.startsWith('q:')){ const S = state.step; answered[S] = +id.slice(2); menuP.key = ''; }
+}
+function menuPage(d){ if (vmenu.open){ vmenu.page = clamp(vmenu.page + d, 0, vmenu.pages.length - 1); menuP.key = ''; } }
+
+/* ---- grafik: adımın yan şeması ve renk kodu ---- */
+const insetImg = {key:'', img:null, ok:false};
+function insetSVG(S){
+  const d = INSET[S]; if (!d) return null;
+  const ink = uiTheme().ink;
+  let s = d.s.replace(/currentColor/g, ink);
+  s = s.replace('<svg ', '<svg xmlns="http://www.w3.org/2000/svg" width="1190" height="714" font-family="system-ui, Roboto, Arial, sans-serif" ');
+  return s;
+}
+function drawInset(force){
+  const S = state.step, P = insetP, d = INSET[S], dark = themeDark() ? 1 : 0;
+  const k = S + '|' + dark + '|' + (insetImg.ok ? 1 : 0);
+  if (!force && k === P.key) return;
+  P.key = k; P.shown = null;
+  const W = P.cv.width, H = P.cv.height, cx = P.cx, T = uiTheme();
+  P.btns = [];
+  frameBox(P, true);
+  cx.fillStyle = T.acc; cx.font = '600 28px ' + MONO;
+  if (d){
+    cx.fillText(String(d.t).toUpperCase(), 40, 34);
+    if (insetImg.key === S + '|' + dark && insetImg.ok) cx.drawImage(insetImg.img, 40, 84, W - 80, (W - 80) * .6);
+    cx.fillStyle = T.ink; cx.font = '400 32px ' + SANS;
+    drawText(cx, d.c, 40, 84 + (W - 80) * .6 + 24, W - 80, 42, 3);
+    if (insetImg.key !== S + '|' + dark){
+      insetImg.key = S + '|' + dark; insetImg.ok = false;
+      const im = new Image();
+      im.onload = () => { if (insetImg.key === S + '|' + dark){ insetImg.img = im; insetImg.ok = true; drawInset(true); } };
+      im.onerror = () => { insetImg.ok = false; };
+      im.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(insetSVG(S));
+    }
+  } else {
+    /* şeması olmayan adımlarda: bu adımdaki yapıların renk kodu; satıra tetikle bilgi kartı */
+    const f = new Set(STEPS[S-1].focus || []);
+    let list = LEGEND.filter(([,,keys]) => keys.some(k => f.has(k)));
+    if (list.length < 3) list = LEGEND;
+    list = list.slice(0, 7);
+    cx.fillText('RENK KODU · BU ADIM', 40, 34);
+    list.forEach(([n, c, keys], i) => {
+      const key = keys.find(k => f.has(k) && INFO[k]) || keys.find(k => INFO[k]);
+      drawRow(P, 'leg:' + key, 40, 84 + i*60, W - 80, 54, {label:n, swatch:hex(c)});
+    });
+  }
+  P.tex.needsUpdate = true;
+}
+
+/* ---- etiketler: adımın çağrı notları üç boyutlu iğneler olarak ---- */
+const LABKEY = [
+  [/Natalizumab|Anti-α4 antikoru|Antikor uzaklaştırılınca/i, 'ntz'], [/Menteşe/i, 'hinge'], [/IgG4|Fab-kol/i, 'igg4'],
+  [/β7|LPAM/i, 'lpam1'], [/VLA-4|α4β1|Lökosit · α4β1/i, 'vla4'], [/β1/i, 'b1'], [/Yüzey CD49d/i, 'cd49d'], [/α4|CD49d/i, 'a4'],
+  [/MAdCAM/i, 'madcam'], [/VCAM/i, 'vcam'], [/Fibronektin/i, 'fn'], [/Sıkı bağlantı/i, 'tj'],
+  [/Kan–beyin bariyeri|endotel|damar/i, 'endo'], [/Perivasküler/i, 'pvs'], [/Dendritik/i, 'dc'], [/Glia limitans|GFAP/i, 'glia'],
+  [/Nörofilaman/i, 'nfl'], [/Akson/i, 'axon'], [/Miyelin/i, 'myelin'], [/Oligodendrosit/i, 'olig'], [/JC virüsü|JCV/i, 'jcv'],
+  [/Beyin omurilik sıvısı|BOS|Lökosit sayısı/i, 'csf'], [/IL-|CXCL|CCL/i, 'cyto'], [/CXCR3/i, 'cxcr3'], [/B hücre|pre-B/i, 'bcell'],
+  [/Lenf nodu/i, 'lymph'], [/Kemik iliği|Niş/i, 'marrow'], [/CD34/i, 'cd34'], [/L-selektin/i, 'lsel'], [/Th17/i, 'th17'],
+  [/PSGL/i, 'psgl'], [/MCAM/i, 'mcam'], [/Kemokin reseptörü/i, 'chemo'], [/Kutuplaş|T lenfositi|T hücre|Lökosit/i, 'tcell'], [/Satürasyon/i, 'a4'], [/Plazma değişimi/i, 'ntz']
+];
+const labKey = t => { const m = LABKEY.find(([re]) => re.test(t)); return m && DEFS[m[1]] ? m[1] : null; };
+let pinStep = -1, pinList = [];
+function buildPins(){
+  pinStep = state.step;
+  pinList = (CALL[state.step] || []).slice(0, 4).map(([f, t, when, sub]) =>
+    ({f, t: (sub != null ? 'Tedavi · ' : '') + t, when: when || (sub != null ? (q => q > .75) : null),
+     key: labKey(t) || (STEPS[state.step-1].focus || []).find(k => INFO[k]) || null}));   /* eşleşme yoksa adımın ana yapısı */
+  PINS.forEach(P => { P.g.visible = false; P.ln.visible = false; P.key = ''; P.btns = []; setHover(P, null); });
+}
+function drawPin(P, text, key){
+  const k = text + '|' + (key ? 1 : 0) + '|' + (themeDark() ? 1 : 0);
+  if (k === P.key) return;
+  P.key = k;
+  const W = P.cv.width, H = P.cv.height, cx = P.cx, T = uiTheme();
+  cx.clearRect(0, 0, W, H);
+  cx.fillStyle = T.bg; rrect(cx, 4, 4, W - 8, H - 8, 44); cx.fill();
+  cx.strokeStyle = key ? T.acc : T.line; cx.lineWidth = key ? 5 : 3; cx.stroke();
+  cx.textAlign = 'center'; cx.textBaseline = 'middle';
+  let fs = 54; cx.font = '700 ' + fs + 'px ' + SANS;
+  while (fs > 28 && cx.measureText(text).width > W - 60){ fs -= 2; cx.font = '700 ' + fs + 'px ' + SANS; }
+  cx.fillStyle = T.ink; cx.fillText(text, W/2, H/2 + 2);
+  cx.textAlign = 'left'; cx.textBaseline = 'top';
+  P.btns = [{id:'pin:' + P.pinIdx, x:0, y:0, w:W, h:H}];
+  P.tex.needsUpdate = true;
+}
+PINS.forEach((P, i) => { P.pinIdx = i; });
+const _pr = new THREE.Vector3(), _pu = new THREE.Vector3(), _pa = new THREE.Vector3();
+function updatePins(pr){
+  if (pinStep !== state.step) buildPins();
+  if (!hudOn){ PINS.forEach(P => { P.g.visible = false; P.ln.visible = false; }); return; }
+  _pr.set(1,0,0).applyQuaternion(XR.hq); _pu.set(0,1,0).applyQuaternion(XR.hq);
+  const act = [];
+  pinList.forEach((L, i) => {
+    const P = PINS[i], show = !L.when || L.when(pr);
+    if (!show){ P.g.visible = false; P.ln.visible = false; setHover(P, null); return; }
+    const a = root.localToWorld(L.f());                    /* iğnenin hedefi: sahne yerel konumundan dünyaya */
+    drawPin(P, L.t, L.key);
+    const dist = XR.hp.distanceTo(a), sc = clamp(dist, .5, 3) * .62;
+    P.sc = sc; P.a = a; P.pos = a.clone().addScaledVector(_pu, .085 * sc + .02);
+    act.push(P);
+  });
+  /* iğneler üst üste binmesin: baş eksenlerinde birkaç gevşetme turu */
+  for (let it = 0; it < 3; it++){
+    for (let i = 0; i < act.length; i++) for (let j = i + 1; j < act.length; j++){
+      const A = act[i], B = act[j], d = _pa.copy(B.pos).sub(A.pos);
+      const dr = d.dot(_pr), du = d.dot(_pu), w = .46 * (A.sc + B.sc) / 2, h = .095 * (A.sc + B.sc) / 2 * 1.15;
+      if (Math.abs(dr) < w && Math.abs(du) < h){ B.pos.addScaledVector(_pu, (du >= 0 ? 1 : -1) * (h - Math.abs(du) + .004)); }
+    }
+  }
+  act.forEach(P => {
+    P.g.position.copy(P.pos); P.g.scale.setScalar(P.sc); P.g.lookAt(XR.hp); P.g.visible = true; P.g.updateMatrixWorld(true);
+    const pa = P.ln.geometry.attributes.position;
+    pa.setXYZ(0, P.pos.x, P.pos.y - .047*P.sc, P.pos.z); pa.setXYZ(1, P.a.x, P.a.y, P.a.z); pa.needsUpdate = true; P.ln.visible = true;
+  });
+}
 
 /* ---- ışının üstündeki yapının adı ---- */
 let tagName = '';
@@ -2528,7 +2850,7 @@ const angDiff = (a, b) => { let d = a - b; while (d > Math.PI) d -= 2*Math.PI; w
 
 const ROOT0 = {p:root.position.clone(), q:root.quaternion.clone(), s:root.scale.x};
 const VRS = {anchor:new THREE.Vector3(), yaw:0, k:1, dirty:true, pending:false};
-const HUDC = {yaw:0, follow:false, manual:false};
+const HUDC = {yaw:0, follow:false, manual:false, insetManual:false};
 function vrHome(){
   const f = headFwdFlat(new THREE.Vector3());
   VRS.anchor.copy(XR.hp).addScaledVector(f, .85); VRS.anchor.y = XR.hp.y - .12;
@@ -2544,15 +2866,19 @@ function placeScene(){
   root.position.copy(VRS.anchor).sub(tgt.multiplyScalar(s).applyQuaternion(root.quaternion));
   root.updateMatrixWorld(true);
 }
-function hudPlace(){
-  const d = 1.05;
-  hudP.g.position.set(XR.hp.x - Math.sin(HUDC.yaw)*d, XR.hp.y - .36, XR.hp.z - Math.cos(HUDC.yaw)*d);
-  hudP.g.lookAt(XR.hp);
+function ringPlace(P, yaw, dy, d){
+  P.g.position.set(XR.hp.x - Math.sin(yaw)*d, XR.hp.y + dy, XR.hp.z - Math.cos(yaw)*d);
+  P.g.lookAt(XR.hp);
 }
-function hudHome(){ HUDC.yaw = headYaw(); HUDC.follow = false; HUDC.manual = false; hudPlace(); }
-/* panel başı kilitli değildir: baş yaklaşık 35° döndüğünde yavaşça yetişir */
+function hudPlace(){
+  ringPlace(hudP, HUDC.yaw, -.50, 1.05);
+  if (!HUDC.insetManual) ringPlace(insetP, HUDC.yaw - .52, .02, 1.05);   /* şema, panelin sağ üstünde */
+}
+function hudHome(){ HUDC.yaw = headYaw(); HUDC.follow = false; HUDC.manual = false; HUDC.insetManual = false; hudPlace(); }
+/* paneller başa kilitli değildir: baş yaklaşık 35° döndüğünde yavaşça yetişir */
 function placeHud(dt){
   hudP.g.visible = hudOn;
+  insetP.g.visible = hudOn && !vcard.open && !vmenu.open;      /* kart ve menü açıkken şema geri çekilir */
   if (!hudOn) return;
   if (!HUDC.manual){
     const hy = headYaw(), dy = angDiff(hy, HUDC.yaw);
@@ -2562,12 +2888,13 @@ function placeHud(dt){
       if (Math.abs(angDiff(hy, HUDC.yaw)) < .04) HUDC.follow = false;
     }
     hudPlace();
-  }
-  hudP.g.updateMatrixWorld(true);
+  } else if (!HUDC.insetManual) ringPlace(insetP, HUDC.yaw - .52, .02, 1.05);
+  hudP.g.updateMatrixWorld(true); insetP.g.updateMatrixWorld(true);
 }
 function restoreScene(){
   root.position.copy(ROOT0.p); root.quaternion.copy(ROOT0.q); root.scale.setScalar(ROOT0.s);
-  hudP.g.visible = false; cardP.g.visible = false; tagP.g.visible = false; vcard.open = false;
+  ALLP.forEach(P => { P.g.visible = false; }); tagP.g.visible = false; PINS.forEach(P => { P.ln.visible = false; });
+  vcard.open = false; vmenu.open = false; emphasize(null);
   ctls.forEach(c => { c.userData.grab = null; });
 }
 
@@ -2583,7 +2910,7 @@ function mkCtl(i){
     new THREE.LineBasicMaterial({color:0x8BB9CA, transparent:true, opacity:.8}));
   line.scale.z = 1.2; c.add(line);
   const tip = new THREE.Mesh(new THREE.SphereGeometry(.008,10,8), new THREE.MeshBasicMaterial({color:0xE7E2F2, depthTest:false}));
-  tip.renderOrder = 10002; tip.position.z = -1.2; c.add(tip);
+  tip.renderOrder = 10100; tip.position.z = -1.2; c.add(tip);
   c.userData = {i, line, tip, src:null, hand:(i === 0 ? 'right' : 'left'), btn:[], ui:null, sh:null, grab:null, armed:true};
   c.addEventListener('connected', e => { c.userData.src = e.data; if (e.data.handedness && e.data.handedness !== 'none') c.userData.hand = e.data.handedness; });
   c.addEventListener('disconnected', () => { c.userData.src = null; c.userData.grab = null; });
@@ -2605,10 +2932,10 @@ function ctlRay(c){
   vrRay.far = 20;
   return vrRay;
 }
-/* panel (HUD ya da kart) üzerindeki isabet ve düğme */
+/* panel (HUD, kart, menü, şema, iğne) üzerindeki isabet ve düğme */
 function uiHit(c){
   const r = ctlRay(c); let best = null;
-  for (const P of [cardP, hudP]){
+  for (const P of ALLP){
     if (!P.g.visible) continue;
     P.g.updateMatrixWorld(true);
     const h = r.intersectObject(P.mesh, false)[0];
@@ -2644,14 +2971,25 @@ const SPEEDS = [.5, 1, 1.5, 2];
 function cycleSpeed(){ state.speed = SPEEDS[(SPEEDS.indexOf(state.speed) + 1) % SPEEDS.length]; hudKey = ''; }
 function uiPress(id, c){
   const n = vcard.open && INFO[vcard.key] ? INFO[vcard.key].length : 0;
-  switch (id){
+  if (id === 'mclose' || id === 'mprev' || id === 'mnext' || id.startsWith('tab:') || id.startsWith('step:') || id.startsWith('key:') || id.startsWith('q:')){
+    menuPress(id);
+  } else if (id.startsWith('pin:')){
+    const L = pinList[+id.slice(4)];
+    if (L && L.key) openCard(L.key, PINS[+id.slice(4)].a || null);
+  } else if (id.startsWith('leg:')){
+    const k = id.slice(4); if (INFO[k]) openCard(k, null);
+  } else switch (id){
     case 'prev': stepBy(-1); break;
     case 'next': stepBy(1); break;
     case 'play': togglePlay(); break;
+    case 'menu': if (vmenu.open) closeMenu(); else openMenu(); break;
     case 'center': vrHome(); placeScene(); break;
+    case 'speed': cycleSpeed(); break;
     case 'help': hudHelp = !hudHelp; break;
-    case 'cprev': vcard.page = Math.max(0, vcard.page - 1); break;
-    case 'cnext': vcard.page = Math.min(n - 1, vcard.page + 1); break;
+    case 'cprev': cardPage(-1); break;
+    case 'cnext': cardPage(1); break;
+    case 'cemph': emphasize(emphKey === vcard.key ? null : vcard.key); break;
+    case 'crel': if (vcard.rel){ const k = vcard.key, p = vcard.pt; goStep(vcard.rel, state.playing); openCard(k, p); } break;
     case 'cclose': closeCard(); break;
   }
   hudKey = ''; cardP.key = ''; buzz(c, .4, 35);
@@ -2661,7 +2999,7 @@ function onSelect(c){
   if (u){ if (u.id) uiPress(u.id, c); return; }       /* panel üzerinde: düğme ya da boş alan */
   const h = sceneHit(c, true);
   if (h){ openCard(h.key, h.point); buzz(c, .6, 50); return; }
-  if (vcard.open){ closeCard(); buzz(c, .25, 30); }     /* boşluğa tetik: kartı kapatır */
+  if (vcard.open){ closeCard(); buzz(c, .25, 30); }    /* boşluğa tetik: kartı kapatır */
 }
 
 /* ---- tut, taşı, ölçekle, döndür ---- */
@@ -2680,9 +3018,10 @@ function rebaseGrab(){
 function onSqueeze(c, down){
   if (!down){ c.userData.grab = null; return; }
   const u = uiHit(c);
-  if (u){                                             /* paneli tut: yalnız konum izler, yüz başa dönük kalır */
+  if (u && !u.P.pin){                                 /* paneli tut: yalnız konum izler, yüz başa dönük kalır */
     c.userData.grab = {type:'panel', P:u.P, off:u.P.g.position.clone().sub(ctlPos(c))};
     if (u.P === hudP) HUDC.manual = true;
+    if (u.P === insetP) HUDC.insetManual = true;
     buzz(c, .3, 30); return;
   }
   c.userData.grab = {type:'scene'};
@@ -2711,7 +3050,8 @@ function updateGrab(){
 }
 
 /* ---- düğmeler ve çubuklar ----
-   xr-standard eşlemesi: 0 tetik, 1 kavrama, 3 çubuğa basma, 4 A/X, 5 B/Y; eksenler 2-3 çubuk */
+   xr-standard eşlemesi: 0 tetik, 1 kavrama, 3 çubuğa basma, 4 A/X, 5 B/Y; eksenler 2-3 çubuk.
+   A: sonraki adım · X: önceki adım · B: oynat/duraklat · Y: menü */
 function pollPads(dt){
   ctls.forEach(c => {
     const src = c.userData.src, g = src && src.gamepad;
@@ -2727,19 +3067,21 @@ function pollPads(dt){
     const x = dz(rx), y = dz(ry);
     if (hand === 'right'){
       if (edge(4)){ stepBy(1);  buzz(c); }                         /* A: sonraki adım */
-      if (edge(5)){ stepBy(-1); buzz(c); }                         /* B: önceki adım */
+      if (edge(5)){ togglePlay(); buzz(c); }                       /* B: oynat / duraklat */
       if (edge(3)){ vrHome(); placeScene(); buzz(c, .5, 60); }     /* çubuğa bas: ortala */
       if (x){ VRS.yaw -= x * 1.5 * dt; VRS.dirty = true; }         /* yatay: döndür */
       if (y){ VRS.k = clamp(VRS.k * Math.exp(-y * 1.1 * dt), .15, 12); VRS.dirty = true; }   /* yukarı: büyüt */
     } else {
-      if (edge(4)){ togglePlay(); buzz(c); }                       /* X: oynat / duraklat */
-      if (edge(5)){ hudOn = !hudOn; buzz(c); }                     /* Y: paneli gizle / göster */
-      if (edge(3)){ cycleSpeed(); buzz(c, .4, 40); }               /* çubuğa bas: hız */
+      if (edge(4)){ stepBy(-1); buzz(c); }                         /* X: önceki adım */
+      if (edge(5)){ if (vmenu.open) closeMenu(); else openMenu(); buzz(c); }   /* Y: menü */
+      if (edge(3)){ hudOn = !hudOn; buzz(c, .4, 40); }             /* çubuğa bas: panelleri gizle / göster */
       if (y){                                                      /* yukarı: sahneyi uzaklaştır */
         headFwdFlat(_a); VRS.anchor.addScaledVector(_a, -y * .9 * dt); VRS.dirty = true;
       }
-      if (Math.abs(rx) > .8 && Math.abs(rx) > Math.abs(ry) * 1.4 && c.userData.armed){   /* yatay fırlatma: adım */
-        c.userData.armed = false; stepBy(rx > 0 ? 1 : -1); buzz(c);
+      if (Math.abs(rx) > .8 && Math.abs(rx) > Math.abs(ry) * 1.4 && c.userData.armed){   /* yatay fırlatma */
+        c.userData.armed = false; const d = rx > 0 ? 1 : -1;
+        if (vmenu.open) menuPage(d); else if (vcard.open) cardPage(d); else stepBy(d);
+        buzz(c);
       }
       if (Math.abs(rx) < .4) c.userData.armed = true;
     }
@@ -2758,7 +3100,7 @@ document.head.appendChild(simStyle);
 const VR_SKIP = new Set(['endo','bm','lumen','fn','pvs','tj']);
 function enterMode(){
   document.body.classList.add('xr-on');
-  hudKey = ''; cardP.key = ''; vcard.open = false; hudHelp = false; hudOn = true;
+  hudKey = ''; cardP.key = ''; vcard.open = false; vmenu.open = false; hudHelp = false; hudOn = true;
   setPlaying(true);            /* başlıkta sahne duraklatılmış açılmasın */
   VRS.pending = true;          /* yerleşim, baş pozu ilk karede okununca yapılır */
   placeScene();
@@ -2852,13 +3194,17 @@ function vrFrame(dt){
   updateGrab();
   if (VRS.dirty){ placeScene(); VRS.dirty = false; }
   placeHud(dt);
-  let hh = null, hc = null;
+  const pr = clamp(state.tau / stepDur(state.step));
+  drawHud(); drawCard(); drawMenu(); drawInset();
+  updatePins(pr);
+  /* ışın üstündeki düğme vurgusu: doku yenilenmeden, yarı saydam levha ile */
+  const hov = new Map();
   ctls.forEach(c => {
     if (!c.visible){ c.userData.ui = null; return; }
     const u = uiHit(c); c.userData.ui = u;
-    if (u && u.id){ if (u.P === hudP) hh = u.id; else hc = u.id; }
+    if (u && u.id) hov.set(u.P, u.id);
   });
-  hudP.hover = hh; cardP.hover = hc;
+  ALLP.forEach(P => setHover(P, hov.get(P) || null));
   /* sahne ışını pahalıdır: her karede yalnız bir kumandada, sırayla */
   const c0 = ctls[vrTick++ % ctls.length];
   if (c0.visible) c0.userData.sh = c0.userData.ui ? null : sceneHit(c0, false);
@@ -2876,8 +3222,6 @@ function vrFrame(dt){
     tagP.g.position.copy(s.point); tagP.g.position.y += .08 * sc; tagP.g.scale.setScalar(sc);
     tagP.g.lookAt(XR.hp); tagP.g.visible = true;
   } else tagP.g.visible = false;
-  drawHud();
-  drawCard();
 }
 
 /* ======================================================================
@@ -2940,6 +3284,26 @@ stage.addEventListener('wheel', e => {
 $('#resetView').onclick = () => { camTarget(state.step); state.snap = true; };
 
 /* ---------------- odak: ilgili yapılar öne çıkar ---------------- */
+/* v25: odaktaki küçük yapılar hafifçe nabız atar; büyük taşıyıcı yapılar dışarıda bırakılır */
+const GLOW_SKIP = new Set(['endo','bm','lumen','pvs','tj','glia','myelin','csf','lymph','marrow','gut','fn']);
+function glowOn(m, a){ if (m && m.userData) m.userData.glowF = a; }
+function glowOff(m){ if (m && m.userData) m.userData.glowF = 0; }
+function stepGlow(t){
+  const f = new Set(STEPS[state.step-1].focus || []), pul = .5 + .5*Math.sin(t*2.4);
+  Object.keys(REG).forEach(k => {
+    const auto = f.has(k) && !GLOW_SKIP.has(k) ? .10 + .10*pul : 0;
+    REG[k].mats.forEach(m => {
+      const u = m.userData; if (!u || !m.emissive) return;
+      const want = Math.max(u.glowF || 0, auto);
+      if (want > 0){
+        if (!u.em0 || u._pl !== m.emissiveIntensity) u.em0 = {c: u.em0 ? u.em0.c : m.emissive.clone(), i: m.emissiveIntensity};
+        m.emissive.copy(m.color); m.emissiveIntensity = u.em0.i + want; u._pl = m.emissiveIntensity;
+      } else if (u.em0){
+        m.emissive.copy(u.em0.c); m.emissiveIntensity = u.em0.i; u.em0 = null; u._pl = null;
+      }
+    });
+  });
+}
 function applyFocus(S){
   const f = new Set(STEPS[S-1].focus || []);
   Object.keys(REG).forEach(k => {
@@ -2947,9 +3311,9 @@ function applyFocus(S){
     REG[k].mats.forEach(m => {
       const base = m.userData.base, bo = m.userData.baseOp;
       const col = new THREE.Color(base);
-      if (!on){ col.lerp(new THREE.Color(themeDark() ? 0x1A2220 : 0xCBD4CE), .55); }
+      if (!on){ col.lerp(new THREE.Color(themeDark() ? 0x1A2220 : 0xCBD4CE), .68); }
       m.color.copy(col.convertSRGBToLinear());
-      if (m.transparent) m.opacity = bo * (on ? 1 : .55);
+      if (m.transparent) m.opacity = bo * (on ? 1 : .40);
       if (m.emissiveIntensity != null && m.userData.k) m.emissiveIntensity = (m.emissiveIntensity || 0);
     });
   });
@@ -3106,8 +3470,11 @@ function renderCard(S){
   if (qz && answered[S] != null) markQuiz(qz, S, answered[S]);
   /* ek pencere */
   const ins = $('#inset'), d = INSET[S];
-  if (d){ ins.hidden = false; ins.innerHTML = `<div class="ttl">${esc(d.t)}</div>${d.s}<p class="cap">${esc(d.c)}</p>`; }
-  else ins.hidden = true;
+  if (d){
+    ins.hidden = false; ins.innerHTML = `<div class="ttl">${esc(d.t)}</div>${d.s}<p class="cap">${esc(d.c)}</p>`;
+    ins.classList.remove('big'); ins.style.animation = 'none'; void ins.offsetWidth; ins.style.animation = '';
+    ins.tabIndex = 0; ins.setAttribute('role', 'button'); ins.title = 'Büyütmek için tıklayın';
+  } else ins.hidden = true;
   /* faz etiketi */
   const hang = $('#hang');
   if (hang.dataset.ph !== PHASE_LETTER(S)){
@@ -3147,20 +3514,57 @@ function placePop(){
 }
 function drawPop(){
   const pages = INFO[popKey]; if (!pages) return;
-  const pg = pages[popPage];
   pop.hidden = false;
-  pop.innerHTML = `<div class="pg"><strong>${esc(DEFS[popKey] || popKey)}</strong>`
-    + `<span class="dots">${pages.map((_,i) => i === popPage ? '●' : '○').join(' ')}</span></div>`
-    + `<p class="eyebrow">${esc(pg.t)}</p><p>${esc(pg.b)}</p>`
-    + `<nav class="pnav"><button class="pbtn" data-d="-1" ${popPage===0?'disabled':''}>‹</button>`
-    + `<button class="pbtn" data-d="1" ${popPage===pages.length-1?'disabled':''}>›</button>`
-    + `<button class="pbtn" data-x="1">Kapat</button></nav>`;
-  pop.querySelectorAll('[data-d]').forEach(b => b.onclick = () => { popPage = clamp(popPage + (+b.dataset.d), 0, pages.length-1); drawPop(); });
+  pop.innerHTML = `<h3>${esc(DEFS[popKey] || popKey)}</h3>`
+    + `<div class="ptrk" tabindex="0" role="group" aria-label="Bilgi sayfaları; sol ve sağ ok tuşlarıyla geçilir">`
+    + pages.map(pg => `<div class="pg"><p class="eyebrow">${esc(pg.t)}</p><p>${esc(pg.b)}</p></div>`).join('') + `</div>`
+    + `<nav class="pnav"><button class="pa" data-d="-1" aria-label="Önceki sayfa">‹</button>`
+    + `<span class="dots" role="tablist">${pages.map((_,i) => `<i data-i="${i}" role="tab" aria-label="Sayfa ${i+1}" class="${i === popPage ? 'on' : ''}"></i>`).join('')}</span>`
+    + `<button class="pa" data-d="1" aria-label="Sonraki sayfa">›</button></nav>`
+    + `<button class="px" data-x="1" aria-label="Kapat">×</button>`;
+  const trk = pop.querySelector('.ptrk'), dots = [...pop.querySelectorAll('.dots i')], pa = [...pop.querySelectorAll('[data-d]')];
+  const sync = () => {                      /* noktalar ve oklar, kaydırma konumundan türetilir */
+    const w = trk.clientWidth || 1, i = clamp(Math.round(trk.scrollLeft / w), 0, pages.length - 1);
+    popPage = i;
+    dots.forEach((d, j) => d.classList.toggle('on', j === i));
+    pa[0].disabled = i === 0; pa[1].disabled = i === pages.length - 1;
+  };
+  const go = i => {
+    i = clamp(i, 0, pages.length - 1);
+    popPage = i; dots.forEach((d, j) => d.classList.toggle('on', j === i));      /* noktalar hemen güncellenir */
+    pa[0].disabled = i === 0; pa[1].disabled = i === pages.length - 1;
+    trk.scrollTo({left: i * trk.clientWidth, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+  };
+  trk.addEventListener('scroll', sync, {passive:true});      /* sync ucuzdur: doğrudan çalışır */
+  pa.forEach(b => b.onclick = () => go(popPage + (+b.dataset.d)));
+  dots.forEach(d => d.onclick = () => go(+d.dataset.i));
+  trk.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight'){ go(popPage + 1); e.preventDefault(); }
+    else if (e.key === 'ArrowLeft'){ go(popPage - 1); e.preventDefault(); }
+  });
+  /* fare ile sürükleme (dokunmatikte yerel kaydırma çalışır) */
+  let dr = null;
+  trk.addEventListener('pointerdown', e => {
+    if (e.pointerType !== 'mouse' || e.button !== 0) return;
+    dr = {x:e.clientX, s:trk.scrollLeft}; trk.classList.add('drag'); trk.setPointerCapture(e.pointerId);
+  });
+  trk.addEventListener('pointermove', e => { if (dr) trk.scrollLeft = dr.s - (e.clientX - dr.x); });
+  const end = () => { if (!dr) return; dr = null; trk.classList.remove('drag'); go(Math.round(trk.scrollLeft / (trk.clientWidth || 1))); };
+  trk.addEventListener('pointerup', end); trk.addEventListener('pointercancel', end);
   pop.querySelector('[data-x]').onclick = closePop;
   placePop();
+  trk.scrollLeft = popPage * trk.clientWidth; sync();
+  try { trk.focus({preventScroll:true}); } catch(e){}
 }
 function closePop(){ pop.hidden = true; popKey = null; }
 addEventListener('keydown', e => { if (e.key === 'Escape' && !pop.hidden) closePop(); });
+/* şema: tıklayınca büyür, yeniden tıklayınca küçülür */
+(function(){
+  const ins = $('#inset');
+  const tg = () => { ins.classList.toggle('big'); ins.title = ins.classList.contains('big') ? 'Küçültmek için tıklayın' : 'Büyütmek için tıklayın'; };
+  ins.addEventListener('click', tg);
+  ins.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); tg(); } });
+})();
 /* sahnede tıklama ile yapı seçimi */
 const ray = new THREE.Raycaster();
 stage.addEventListener('click', e => {
@@ -3306,6 +3710,7 @@ function frame(now){
   const xr = XR.active || XR.sim;
   if (!xr) camStep(dt);
   pose(state.step, p);
+  stepGlow(performance.now()/1000);
   if (xr){ vrFrame(dt); } else { updateLabels(p); }
   updateCaps(state.step, state.tau);
   updateProg(p);
@@ -3316,8 +3721,8 @@ function frame(now){
 if (/[?&]test\b/.test(location.search)){
   window.__ntz = {
     state, goStep, CALL, STEPS, camera, camApply, camTarget, dur:stepDur,
-    vr:{PICK, DEFS, INFO, XR, VRS, HUDC, ctls, hudP, cardP, tagP, vcard, GRAB, uiHit, sceneHit, openCard, closeCard, onSelect, onSqueeze,
-        vrFrame, vrHome, placeScene, toggleSim, stepBy, pollPads, drawHud, drawCard, hudOn:() => hudOn, hudHelp:() => hudHelp},
+    vr:{PICK, DEFS, INFO, XR, VRS, HUDC, ctls, hudP, cardP, menuP, insetP, tagP, PINS, ALLP, vcard, vmenu, GRAB, uiHit, sceneHit, openCard, closeCard, openMenu, closeMenu, menuPress, onSelect, onSqueeze,
+        vrFrame, vrHome, placeScene, toggleSim, stepBy, pollPads, drawHud, drawCard, drawMenu, drawInset, updatePins, labKey, emphasize, hudOn:() => hudOn, hudHelp:() => hudHelp, pinList:() => pinList, emph:() => emphKey},
     frames(){ return frameNo; },
     /* adımın sonundaki (p=1) kare için etiket konumlarını ölç */
     probe(n){
@@ -3349,7 +3754,7 @@ renderer.setAnimationLoop(frame);   /* VR oturumunda da çalışır */
 })();
 </script>
 <p class="foot" style="max-width:1440px;margin:18px auto 0;padding:0 2px">
-  Multipl sklerozda natalizumabın etki mekanizması — α4 integrin blokajı: moleküler hedeften klinik karara. Doç. Dr. Mehmet Fatih Yetkin. Sürüm v24 · 2026-11-21.
+  Multipl sklerozda natalizumabın etki mekanizması — α4 integrin blokajı: moleküler hedeften klinik karara. Doç. Dr. Mehmet Fatih Yetkin. Sürüm v25 · 2026-11-23.
   Üç boyutlu sahne şematiktir; ölçekler ve mesafeler gerçek oranları yansıtmaz.
 </p>
 </body>
